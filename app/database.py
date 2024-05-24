@@ -6,6 +6,8 @@ from dotenv import load_dotenv
 
 if(load_dotenv() is None):
     load_dotenv(".env")
+else:
+    load_dotenv()
 
 DATABASE_URL=os.getenv('DB_URL')
 
