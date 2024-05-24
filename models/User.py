@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, TEX
+from sqlalchemy import Column, Integer, String
 from .base import Base
 
 class User(Base):
