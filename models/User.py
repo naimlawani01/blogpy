@@ -1,4 +1,4 @@
-from sqlalchemy import TIMESTAMP, Boolean, Column, ForeignKey, Integer, String, Numeric
+from sqlalchemy import Column, Integer, String, TEX
 from .base import Base
 
 class User(Base):
