@@ -10,8 +10,7 @@ else:
     load_dotenv()
 
 DATABASE_URL=os.getenv('DB_URL')
-
-
+print(DATABASE_URL)
 #connect 
 database_engine = create_engine(DATABASE_URL)
 
