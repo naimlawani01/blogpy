@@ -25,7 +25,7 @@ async def create_user(
     ):
     try: 
         hashed_password = utilities.hash_password(payload.password)
-        new_user= User(password=hashed_password, email= payload.email, nom= payload.nom)
+        new_user= User(password=hashed_password, username= payload.username, nom= payload.nom)
         cursor.add(new_user) # Send query
         cursor.commit() # Save the staged changes
         cursor.refresh(new_user) # Pour obtenir l'identifiant
@@ -70,7 +70,7 @@ async def update_user(
         # mise à jour (quoi avec quelle valeur ?) Body -> DTO
         corresponding_user.update({
             "nom": payload.nom,
-            "email": payload.email
+            "username": payload.username
         })
         cursor.commit()
         return corresponding_user.first()

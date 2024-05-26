@@ -21,7 +21,7 @@ async def auth_user(
     ):
     print(payload.__dict__)
     # 1. Recup les crédentials (username car il provient du formulaire par default de FastAPI)
-    corresponding_user = cursor.query(User).filter(User.email == payload.username).first()
+    corresponding_user = cursor.query(User).filter(User.username == payload.username).first()
     # 2. Vérifier dans la DB si user exist
     if(not corresponding_user):
          raise HTTPException(
