@@ -106,18 +106,19 @@ async def update_article(
     payload:schemas_dto.Article_POST_UPDATE_Body, 
     cursor:Session=Depends(get_cursor)
     ):
+    # Le décodage du token permet de récupérer l'identifiant du user
     decoded_user_id = utilities.decode_token(token)
-    user_auth = cursor.query(User).filter(User.id == decoded_user_id).first()
+    corresponding_user = cursor.query(User).filter(User.id == decoded_user_id).first()
 
     # Recherce si la article existe  
     corresponding_article = cursor.query(Article).filter_by(id = article_id)
     if corresponding_article.first():
         # mise à jour (quoi avec quelle valeur ?) Body -> DTO
         corresponding_article.update({
-            "price": payload.price,
-            "description": payload.description,
-            "availability": payload.availability,
-            "rating": payload.rating
+            "title": payload.title,
+            "content": payload.content,
+            "img": payload.img,
+            "user_id" : corresponding_user.id
         })
         cursor.commit() #Save modification
         return corresponding_article.first()
