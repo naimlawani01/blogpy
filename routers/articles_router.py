@@ -62,6 +62,7 @@ async def create_articles(
     new_article = Article(
         title = payload.title,
         content = payload.content,
+        img = payload.img,
         user_id = corresponding_user.id
     ) # build the insert
     cursor.add(new_article) # Send the query
